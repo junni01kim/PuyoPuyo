@@ -61,58 +61,80 @@ __\* 교수님이 제공해주신 함수입니다.__
 __\* 본인이 제작한 함수입니다.__  
 
 8. void printBackground();
-    - 게임 메뉴화면에 그림을 그리는 함수힙니다.
+    - `mainMenu()`에서 메뉴화면에 그림을 그리는 함수힙니다.
     - 그림을 그리는데에는 `BackGround[ ][ ]`를 이용한다.
 9. void printMenuOption(int* selectPosition, int* status);
-    - 메뉴 내용을 깜빡이게 하는 함수
+    - `mainMenu()`에서 메뉴화면의 메뉴 내용을 깜빡이게 한다.
+    - selectPosition: 본인이 어떤 버튼을 누르고 있는지 상태를 받는다.
+    - 본인의 패널이 toggle을 위한 입력 변수이다.
 10. int moveUpDownSelect();
-    - ㅁ
+    - 메뉴화면에서 어느 메뉴를 선택할지 방향을 선택하는 함수이다.
+    - 상하로 조정이 가능하며, 스페이스바로 항목을 선택할 수 있다.
+    - 이동하고 싶다면 ±1을 하되, 선택(space)을 할 시 100을 리턴한다.
 11. int mainMenu();
-    - ㅁ
+    - 메인메뉴 전체를 관리하는 함수이다.
+    - `moveUpDownSelect()`에서 100을 받으면 `selectPosition` 값을 리턴한다.
 12. void explain();
-    - ㅁ
+    - 뿌요뿌요 세번째 메뉴를 담당하는 함수로 게임 방식을 설명하는 함수이다.
+    - 아래에서 위로 텍스트가 올라가는 효과가 있으며, 아무 키나 누르면 이전화면으로 돌아갈 수 있다.
 13. void gameMap();
-    - ㅁ
+    - 게임 맵을 디자인하는 함수이다.
+    - 콘솔창 특성상 한번 생성된 텍스트는 잔상이 남기 때문에 최적화를 위해 한번만 출력되도록 제작하였다.
 14. int mapClear(player* Player1, player* Player2);
-    - ㅁ
+    - 플레이 화면을 정리하는 함수이다.
+    - 게임 내 남아있는 텍스트 잔상을 지우고, 실제 `PuyoStack[ ][ ]`안에 남아있는 값들고 초기화한다.
 15. void puyoLogic(int* logic);
-    - ㅁ
+    - 한 라운드에 사용될 뿌요의 순서를 설정하는 함수이다.
+    - 뿌요들은 총 5*5개로 구성되며, 생성되는 두 뿌요는 10의 자리 값과 1의 자리 값으로 구분해서 저장된다.
+    - 나중에 이 값은 %10과 /10으로 분리하여 각 puyo구조체로 저장된다.
 16. void counter();
-    - ㅁ
+    - 게임 라운드 시작 전 3초의 카운트를 시작하는 함수이다.
 17. void printPuyo(puyo* PuyoX);
-    - ㅁ
+    - puyo 구조체의 `type`에 맞는 캐릭터 디자인을 입혀주는 함수이다.
 18. void printBlank(player* playerX, int indexX, int indexY);
-    - ㅁ
+    - 뿌요 한개 크기의 공백을 그리는 함수이다.
+    - 뿌요가 4개 이상이 모여 사라질 때 `player.PuyoStack[ ][ ]` 값을 기준으로 공백을 그린다.
 19. void clearNowZone(puyo* PuyoX);
-    - ㅁ
+    - 뿌요 한개 크기의 공백을 그리는 함수이다.
+    - 뿌요가 아래로 이동할 때 뿌요의 잔상을 삭제하는 역할을 한다.
+    - puyo 구조체의 위치를 기반으로 공백을 그린다.
 20. void move(player* Player1, player* Player2, puyo* Puyo1, puyo* Puyo2, puyo* Puyo3, puyo* Puyo4, int* spin1, int* spin2);
     - ㅁ
 21. void printTimer(clock_t* duration);
-    - ㅁ
+    - 한 라운드가 진행되고 있는 시간을 출력하는 함수이다.
 22. void printScore(player* PlayerX);
-    - ㅁ
+    - 플레이어의 실시간 점수를 보여주는 함수이다.
 23. void soloPuyoMove(player* PlayerX, puyo* PuyoX);
-    - ㅁ
+    - 플레이어가 조종하는 두 뿌요 중 한 뿌요가 위치가 정해진 후 남은 뿌요의 행동을 관리하는 함수이다.
+    - 다른 뿌요가 아직 공중에 있다면 바닥으로 내려가는 모션을 보여준다.
 24. void nextPuyo(int* logic, player* playerX);
-    - ㅁ
+    - 플레이어가 조종하는 두 뿌요의 위치가 모두 확정된 후 다음 뿌요를 화면에 생성하는 함수
 25.void checkPuyoCount(player* PlayerX, puyo* PuyoX, int checker[][6], int x, int y);
-    - ㅁ
+    - 해당 뿌요가 부숴질 뿌요인지 판단하는 함수이다.
+    - 알고리즘 배우기 전에 만든 알고리즘이라 최적화 할 필요가 있다.
 26. void deletePuyo(player* PlayerX, puyo* PuyoX, int checker[][6], int x, int y);
-    - ㅁ
+    - 4개 이상 뭉친 뿌요들을 부수는 함수이다.
+    - `checkPuyoCount( )`와 동일한 알고리즘을 활용하고 있다. 마찬가지로 수정필요.
 27. void splashObstructPuyo(player* PlayerX, int* x, int* y);
-    - ㅁ
+    - 폭발한 뿌요의 좌표(x, y)의 ±1에 방해뿌요가 있다면 지우는 함수이다.
 28. void dropPuyos(player* PlayerX);
-    - ㅁ
+    - 뿌요가 n차 폭발이 일어난 후 빈 공간을 정렬해주는 함수이다.
 29. void scanPuyo(player* PlayerX, int* colorChecker);
-    - ㅁ
+    - 새로 배치된 뿌요들에게 일어날 동작들을 수행해 주는 함수이다.
+    - `checkPuyoCount()`, `deletePuyo()`, `printScore()`, `dropPuyos()` 함수가 이곳에서 실행된다.
+    - `deletePuyo()`가 진행되었다면 함수가 한번 더 호출된다.(추후 개선예정)
+    - 플레이어의 점수계산이 이곳에서 진행된다.
 30. void printObstructPuyo(player* PlayerX);
-    - ㅁ
+    - 뿌요를 없앤 후 만들어야 할 방해뿌요를 ●와 ○로 출력한다.
+    - 10개의 방해뿌요는 ●로 1개의 방해뿌요는 ○로 표시된다.
 31. void clearObstructPuyo(player* PlayerX);
-    - ㅁ
+    - `printObstructPuyo()` 된 텍스트를 지우는 함수이다.
 32. void getObstructPuyo(player* PlayerX);
-    - ㅁ
+    - 플레이어가 받게될 뿌요 수를 기반으로 방해뿌요를 맵 전체에 고르게 분포 시켜주는 함수이다.
+    - 받게될 방해뿌요가 6개 이상(맵 x축 인덱스 값)을 넘어가면 맵 한줄에 방해 뿌요를 배치하고, 그 값보다 적거나 나머지인 값은 랜덤함수를 이용해 랜덤배치한다.
 33. int playerLose(player* PlayerX);
-    - ㅁ
+    - 플레이어의 뿌요가 일정 높이를 넘게된다면 게임 패배의 문구와 함께 현재 라운드 승리 횟수를 수정해주는 함수이다.
+    - 플레이어가 이긴 판수를 리턴한다.
 34. int everySecond( player* PlayerX, puyo* Puyo1, puyo* Puyo2);
     - ㅁ
 35. int everySeconds(player* Player1, player* Player2, puyo* Puyo1, puyo* Puyo2, puyo* Puyo3, puyo* Puyo4, int* colorChecker1, int* colorChecker2);
