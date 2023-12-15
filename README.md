@@ -99,7 +99,7 @@ __\* 본인이 제작한 함수입니다.__
     - 뿌요가 아래로 이동할 때 뿌요의 잔상을 삭제하는 역할을 한다.
     - puyo 구조체의 위치를 기반으로 공백을 그린다.
 20. void move(player* Player1, player* Player2, puyo* Puyo1, puyo* Puyo2, puyo* Puyo3, puyo* Puyo4, int* spin1, int* spin2);
-    - ㅁ
+    - 플레이어 1,2의 방향키를 조정해주는 함수이다.
 21. void printTimer(clock_t* duration);
     - 한 라운드가 진행되고 있는 시간을 출력하는 함수이다.
 22. void printScore(player* PlayerX);
@@ -136,8 +136,12 @@ __\* 본인이 제작한 함수입니다.__
     - 플레이어의 뿌요가 일정 높이를 넘게된다면 게임 패배의 문구와 함께 현재 라운드 승리 횟수를 수정해주는 함수이다.
     - 플레이어가 이긴 판수를 리턴한다.
 34. int everySecond( player* PlayerX, puyo* Puyo1, puyo* Puyo2);
-    - ㅁ
+    - 조종가능한 두 뿌요 동작을 구현하는 함수이다.
+    - 각 뿌요가 정지될 때 뿌요를 동작시키고 나머지 뿌요의 동작을 단독으로 진행한다.
 35. int everySeconds(player* Player1, player* Player2, puyo* Puyo1, puyo* Puyo2, puyo* Puyo3, puyo* Puyo4, int* colorChecker1, int* colorChecker2);
-    - ㅁ
+    - 뿌요들의 초당 활동을 관리하는 함수이다.
+    - everySecond()와 수행과정에 일어난 방해뿌요의 연산을 진행하는 함수이다.
 36. void start();
-    - ㅁ
+    - 게임을 시작하는 함수이다.
+    - 음악을 재생하고, 라운드를 관리하며 각 라운드에 필요한 지역 변수들을 관리한다.
+    - 루프를 반복시키며 조건에 맞는 함수들을 동작시킨다.
