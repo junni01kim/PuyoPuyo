@@ -208,10 +208,6 @@ void printMenuOption(int *selectPosition, int *status) {
 	// 선택할 값의 위치에 따라 출력문이 달라진다.
 	switch (*selectPosition)
 	{
-	case 3:
-		gotoxy(54, 20);
-		printf("뿌요뿌요 게임");
-		break;
 	case 2:
 		gotoxy(56, 22);
 		printf("게임시작");
@@ -267,10 +263,22 @@ int mainMenu() {
 
 	// 동적 화면 구현
 	int status = 0;
-	int selectPosition = 3; // 맨위에 있는 옵션이라 3부터 시작
+	int selectPosition = 2; // 맨위에 있는 옵션이라 3부터 시작
 	int button = 0;
 	// 선택창 구현
 	while (1) {
+
+		// 상하의 값을 이동하는 키 입력 메뉴를 통한 다음 장면 이동은 메인에서
+		button = moveUpDownSelect();
+		if (button == 100)
+			return selectPosition;
+		else {
+			selectPosition += button;
+
+			// selectPosition이  옵션을 초과해서 이동하면 반대쪽에서 나온다.
+			selectPosition %= 3;
+		}
+
 		// 자신의 위치 표현
 		printMenuOption(&selectPosition, &status);
 		if (status == 0)
@@ -278,34 +286,6 @@ int mainMenu() {
 		else
 			status = 0;
 
-		// 상하의 값을 이동하는 키 입력 메뉴를 통한 다음 장면 이동은 메인에서
-		button = moveUpDownSelect();
-		if (button == 100)
-			switch (selectPosition)
-			{
-			case 3:
-				return 3;
-				break;
-			case 2:
-				return 2;
-				break;
-			case 1:
-				return 1;
-				break;
-			case 0:
-				return 0;
-				break;
-			default:
-				break;
-			}
-		else
-			selectPosition += button;
-
-		// selectPosition이  옵션을 초과해서 이동하면 반대쪽에서 나온다.
-		if (selectPosition < 0)
-			selectPosition = 3;
-		else if (selectPosition > 3)
-			selectPosition = 0;
 		Sleep(500);
 	}
 }
@@ -800,6 +780,14 @@ void printScore(player* PlayerX) {
 	printf("%10d", PlayerX->score);
 }
 
+void clearScore() {
+	gotoxy(55, 25);
+	printf("          ");
+
+	gotoxy(55, 19);
+	printf("          ");
+}
+
 void soloPuyoMove(player* PlayerX, puyo* PuyoX) {
 	if (PlayerX->PlayerX == 1) {
 		clearNowZone(PuyoX);
@@ -1242,14 +1230,14 @@ int everySeconds(player* Player1, player* Player2, puyo* Puyo1, puyo* Puyo2, puy
 		return 1;
 	}
 	else if (player1Checker == 1) {
-		clearObstructPuyo(Player1);
+		clearObstructPuyo(Player2);
 		printPuyo(Puyo1);
 		printPuyo(Puyo2);
 		scanPuyo(Player1, colorChecker1);
 		return 2;
 	}
 	else if (player2Checker == 1) {
-		clearObstructPuyo(Player2);
+		clearObstructPuyo(Player1);
 		printPuyo(Puyo3);
 		printPuyo(Puyo4);
 		scanPuyo(Player2, colorChecker2);
@@ -1456,6 +1444,7 @@ void start() {
 				Puyo4.x = 96;
 				Puyo4.y = 6;
 
+				clearScore();
 			}
 			else if (secondChecker == 2) {
 				player1.obstructPuyoNum = (player1.score - player1.lastScore) / 70;
@@ -1478,6 +1467,8 @@ void start() {
 
 				Puyo2.x = 26;
 				Puyo2.y = 6;
+
+				clearScore();
 			}
 			else if (secondChecker == 3) {
 				player2.obstructPuyoNum = (player2.score - player2.lastScore) / 70;
@@ -1500,6 +1491,8 @@ void start() {
 
 				Puyo4.x = 96;
 				Puyo4.y = 6;
+
+				clearScore();
 			}
 		}
 	}
