@@ -884,11 +884,10 @@ void deletePuyo(player* PlayerX, puyo* PuyoX, int checker[][6], int x, int y) {
 	if (x >= 0 && x <= 6 && y<=12 && y >= 1 && PlayerX->PuyoStack[y - 1][x] == PuyoX->type && checker[y - 1][x] == 1) {
 		deletePuyo(PlayerX, PuyoX, checker, x, y - 1);
 	}
-	if (PlayerX->puyoRemoved >= 4) {
-		splashObstructPuyo(PlayerX, &x, &y);
-		printBlank(PlayerX, x, y);
-		PlayerX->PuyoStack[y][x] = -1;
-	}
+	
+	splashObstructPuyo(PlayerX, &x, &y);
+	printBlank(PlayerX, x, y);
+	PlayerX->PuyoStack[y][x] = -1;
 }
 
 void splashObstructPuyo(player* PlayerX, int* x, int* y) {
@@ -1054,6 +1053,7 @@ void getObstructPuyo(player* PlayerX) {
 			{
 				for (int p = 0; p < seperateObstructPuyo; p++)
 				{
+					if (j + p > 10) continue;
 					PlayerX->PuyoStack[j + p][i] = 5;
 					if (PlayerX->PlayerX == 1) {
 						Puyo.x = 5 * i + 11;
