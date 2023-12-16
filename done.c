@@ -802,19 +802,17 @@ void printScore(player* PlayerX) {
 
 void soloPuyoMove(player* PlayerX, puyo* PuyoX) {
 	if (PlayerX->PlayerX == 1) {
-		while (PlayerX->PuyoStack[(26 - (PuyoX->y - 1)) / 2 - 1][(PuyoX->x - 11) / 5] == -1) {
-			clearNowZone(PuyoX);
+		clearNowZone(PuyoX);
+		while (PlayerX->PuyoStack[(26 - (PuyoX->y - 1)) / 2 - 1][(PuyoX->x - 11) / 5] == -1)
 			PuyoX->y += 2;
-			printPuyo(PuyoX);
-		}
+		printPuyo(PuyoX);
 		PlayerX->PuyoStack[(26 - PuyoX->y) / 2][(PuyoX->x - 11) / 5] = PuyoX->type;// 정지된 해당 뿌요 위치에 player값 대입.
 	}
 	else {
-		while (PlayerX->PuyoStack[(26 - (PuyoX->y - 1)) / 2 - 1][(PuyoX->x - 81) / 5] == -1) {
-			clearNowZone(PuyoX);
+		clearNowZone(PuyoX);
+		while (PlayerX->PuyoStack[(26 - (PuyoX->y - 1)) / 2 - 1][(PuyoX->x - 81) / 5] == -1)
 			PuyoX->y += 2;
-			printPuyo(PuyoX);
-		}
+		printPuyo(PuyoX);
 		PlayerX->PuyoStack[(26 - PuyoX->y) / 2][(PuyoX->x - 81) / 5] = PuyoX->type;// 정지된 해당 뿌요 위치에 player값 대입.
 		Sleep(100);
 	}
