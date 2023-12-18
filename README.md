@@ -1,6 +1,8 @@
 # PuyoPuyo_by_C
 2023년 1학기 프로그래밍 랩 C언어로 만든 뿌요뿌요 입니다.
 
+[데모영상 링크](https://www.youtube.com/watch?v=XhJlx1Pf0bw)
+
 ## 파일 설명
 해당 프로그램은 다음과 같은 구조로 되어 있습니다.
 1. 함수 이름들이 선언되어 있는 standard.h
@@ -111,10 +113,11 @@ __\* 본인이 제작한 함수입니다.__
     - 플레이어가 조종하는 두 뿌요의 위치가 모두 확정된 후 다음 뿌요를 화면에 생성하는 함수
 25.void checkPuyoCount(player* PlayerX, puyo* PuyoX, int checker[][6], int x, int y);
     - 해당 뿌요가 부숴질 뿌요인지 판단하는 함수이다.
-    - 알고리즘 배우기 전에 만든 알고리즘이라 최적화 할 필요가 있다.
+    - 재귀함수를 이용해 사방으로 같은 색상의 뿌요를 탐색한다.
 26. void deletePuyo(player* PlayerX, puyo* PuyoX, int checker[][6], int x, int y);
     - 4개 이상 뭉친 뿌요들을 부수는 함수이다.
     - `checkPuyoCount( )`와 동일한 알고리즘을 활용하고 있다. 마찬가지로 수정필요.
+    - 재귀함수를 이용해 사방으로 같은 색상의 뿌요를 탐색한다.
 27. void splashObstructPuyo(player* PlayerX, int* x, int* y);
     - 폭발한 뿌요의 좌표(x, y)의 ±1에 방해뿌요가 있다면 지우는 함수이다.
 28. void dropPuyos(player* PlayerX);
@@ -124,6 +127,7 @@ __\* 본인이 제작한 함수입니다.__
     - `checkPuyoCount()`, `deletePuyo()`, `printScore()`, `dropPuyos()` 함수가 이곳에서 실행된다.
     - `deletePuyo()`가 진행되었다면 함수가 한번 더 호출된다.(추후 개선예정)
     - 플레이어의 점수계산이 이곳에서 진행된다.
+    - 반약 deletePuyo()가 실행된다면, 모든 뿌요 dropPuyos() 진행 후 한번 더 재귀 시킨다.
 30. void printObstructPuyo(player* PlayerX);
     - 뿌요를 없앤 후 만들어야 할 방해뿌요를 ●와 ○로 출력한다.
     - 10개의 방해뿌요는 ●로 1개의 방해뿌요는 ○로 표시된다.
