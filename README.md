@@ -32,7 +32,7 @@
 [영상 링크](https://youtu.be/oCgn4VIoAEQ)
 
 ## :runner: 3. 실행 방법
-  1. git clone 후 __`IntelliJ`__에서 열기
+  1. git clone 후 `__IntelliJ__`에서 열기
   2. Server.java 실행 (소켓 서버)
   3. Client.java, Client2.java 실행 (소켓 클라이언트)
   ※ 사용하는 port는 9999로, 실행 전 포트가 비어있는 것 확인 필요
