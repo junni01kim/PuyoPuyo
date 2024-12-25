@@ -61,5 +61,5 @@
 ### 추가 정보
   - [파일 구조도](docs/project_tree.md)
 
-## 7. 사전 요구사항
+## :seedling: 7. 사전 요구사항
   - `Java Virtual Machine`
