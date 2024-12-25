@@ -3,12 +3,11 @@
 ### 목차
 [1. 프로젝트의 주요 기능과 목적](#1-프로젝트의-주요-기능과-목적)  
 [2. 작동 영상](#2-작동-영상)  
-[3. 설치 방법](#3-설치-방법)  
+[3. 설치 방법](#3-실행-방법)  
 [4. 문제 해결 방법](#4-문제-해결-방법)  
-[5. 지원방법](#5-지원방법)  
-[6. 라이선스, API 정보](#6-라이선스-API-정보)  
-[7. 심화 자료와 문서 링크](#7-심화-자료와-문서-링크)  
-[8. 사전 요구사항](#8-사전-요구사항)  
+[5. 라이선스, API 정보](#6-라이선스-API-정보)  
+[6. 심화 자료와 문서 링크](#7-심화-자료와-문서-링크)  
+[7. 사전 요구사항](#8-사전-요구사항)  
 
 ### 1. 프로젝트의 주요 기능과 목적
 #### 프로젝트 목적
@@ -27,14 +26,16 @@
   1. 클래스 다이어그램
       1. 이용상황: 기존에 만들어둔 프로젝트 v1.0.0의 알고리즘과 Ui가 존재하는 상황
       2. 사용이유: 개발에 적합 새로운 흐름도 제작보단, 타 인원(v3.0.0 팀원) 이해를 위한 규칙 작성 및 코드 구조 가독성 향상이 중요하다 판단
-![메뉴 구성도](https://github.com/user-attachments/assets/a8fc1aba-3170-4e42-9e72-0c302d35e792)
+※ 새 메뉴 구성도 추가할 것 ※
 
 ### 2. 작동 영상
-  - 영상 링크
+[영상 링크](https://youtu.be/oCgn4VIoAEQ)
 
-### 3. 설치 방법
-  1. 실행파일 링크 ※ `Java Virtual Machine` 설치 필수 ※
-  2. git clone 후 __`IntelliJ`__ 에서 프로젝트 실행 
+### 3. 실행 방법
+  1. git clone 후 __`IntelliJ`__에서 열기
+  2. Server.java 실행 (소켓 서버)
+  3. Client.java, Client2.java 실행 (소켓 클라이언트)
+  ※ 사용하는 port는 9999로, 실행 전 포트가 비어있는 것 확인 필요
 
 ### 4. 문제 해결 방법
   1. 화면 생성(그래픽스): Java Swing을 이용한 그래픽 디자인
@@ -52,23 +53,23 @@
       3. 졈수 계산:
           1. 다음 사이트를 참고하여 제작하였다. [득점 계산](https://puyopuyo.fandom.com/ko/wiki/%EB%93%9D%EC%A0%90_%EA%B3%84%EC%82%B0)
           2. player `dropPuyos()`가 작동된 횟수를 Combo로 판단한다.
+  4. 소켓 통신:
+      1. 서버: 9999 포트를 열고, 게임을 진행한다. 클라이언트의 방향 조작 정보를 바탕으로 게임 맵을 수정하고 클라이언트에게 전달한다.
+      2. 클라이언트: 서버에 접속하고, 사용자에게 게임을 시각적으로 보여준다. 서버 접속 순서에 따라 1P, 2P가 결정된다.
 
-### 5. 지원방법
-  - 자바 Swing 이용
-  - 이미지...
+### 5. 라이선스, API 정보, 라이브러리
+  - [Gson](https://mvnrepository.com/artifact/com.google.code.gson/gson): 소켓 통신 간 객체 전달을 위해 활용
 
-### 6. 라이선스, API 정보
-  - 해당 없음
-
-### 7. 심화 자료와 문서 링크
+### 6. 심화 자료와 문서 링크
 #### 버전 별 ReadMe.md
   - [\[PuyoPuyo_by_Java\] v1.0.0](docs/v1.0.0.md) `Eclips`에서 작동하는 버전 (프로토타입)
-  - [PuyoPuyo_by_Java] v2.0.0 `IntelliJ`에서 작동하는 버전 (2인용) **현재 버전**
-  - [PuyoPuyo_by_Java] v3.0.0 `IntelliJ`에서 작동하는 버전 (네트워크 통신 적용)
+  - [\[PuyoPuyo_by_Java\] v2.0.0](docs/v2.0.0.md) `IntelliJ`에서 작동하는 버전 (로컬 2인용 + 구조 체계화)
+  - [PuyoPuyo_by_Java] v3.0.0 `IntelliJ`에서 작동하는 버전 (네트워크 통신 적용) **현재 버전**
 #### 참고 자료
   - [명품 JAVA Programming (개정4판)](https://www.booksr.co.kr/product/%EB%AA%85%ED%92%88-java-programming/)
   - [자바 Swing 공식 문서](https://docs.oracle.com/javase/tutorial/uiswing/index.html)
   - [득점 계산](https://puyopuyo.fandom.com/ko/wiki/%EB%93%9D%EC%A0%90_%EA%B3%84%EC%82%B0)
+  - [Gson](https://github.com/google/gson)
 
-### 8. 사전 요구사항
+### 7. 사전 요구사항
   - `Java Virtual Machine`
