@@ -70,6 +70,8 @@
   - [자바 Swing 공식 문서](https://docs.oracle.com/javase/tutorial/uiswing/index.html)
   - [득점 계산](https://puyopuyo.fandom.com/ko/wiki/%EB%93%9D%EC%A0%90_%EA%B3%84%EC%82%B0)
   - [Gson](https://github.com/google/gson)
+### 추가 정보
+  - [파일 구조도](docs/project_tree.md)
 
 ## 7. 사전 요구사항
   - `Java Virtual Machine`
