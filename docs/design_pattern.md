@@ -14,10 +14,10 @@
 3. [Command Pattern](src/puyopuyo/server/move_command/LeftMoveCommand.java): 행위 패턴의 일환으로, 요청을 캡슐화하여 이벤트를 재사용성 높은 객체로 만드는 패턴이다.
     - 수신된 정보는 정해진 이벤트를 반복적으로 수행하기에 동작을 모듈화 하고, [인터페이스](src/puyopuyo/server/move_command/MoveCommand.java)를 생성하여 상위 클래스에서의 변경 사항을 최소화
     - [controlPuyo()](src/puyopuyo/server/ServerProcess.java)참고
-   
-5. Template Pattern
-    - 
+    
+4. Observer Pattern (못씀)
+    - 소켓을 통해 전달받은 데이터를 옵저버를 통해 프로세스와 연결
 
-7. Observer Pattern (못씀)
-
-8. MVC Pattern (못씀)
+5. MVC Pattern (못씀)
+    - 클라이언트와 서버의 관계를 Control View Model로 분할
+    - 각 역할을 Panel, Thread, Model(Game, Score 등)이 일부분 맡아서 수행하고 있음.
